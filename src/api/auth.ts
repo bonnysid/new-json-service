@@ -7,10 +7,22 @@ export interface ILoginData {
     sublogin?: string;
 }
 
-export const loginRequest = async (body: ILoginData) => {
-    await sendsay.login(body);
+export interface ILoginResponse {
+    login: string
+    session: string
+    sublogin: string
+}
+
+export interface ILoginError {
+    id: string;
+    explain: string;
+}
+
+export const loginRequest = async (body: ILoginData): Promise<ILoginResponse> => {
+    const data = await sendsay.login(body);
     setCookie({
         name: 'sendsay_session',
         value: sendsay.session,
     });
+    return data;
 }

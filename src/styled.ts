@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { COLORS } from 'constants/utils';
+import { FullScreen } from 'react-full-screen';
 
 export const GlobalStyle = createGlobalStyle`
   div, button, input {
@@ -11,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   
   button {
     cursor: pointer;
+    background: transparent;
   }
 
   *,
@@ -50,11 +52,16 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
+    font-family: SF Pro Text, sans-serif;
   }
   
   ul[class],
   ol[class] {
     list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
   }
   
   a:not([class]) {
@@ -87,7 +94,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export const AppWrapper = styled.div`
+export const AppWrapper = styled(FullScreen)`
   width: 100%;
   min-height: 100vh;
   background: ${COLORS.background};
