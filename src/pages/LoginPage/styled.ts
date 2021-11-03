@@ -5,7 +5,9 @@ export const Container = styled.main`
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  row-gap: 20px;
   justify-content: center;
   background: ${COLORS.background};
 `;
@@ -25,5 +27,16 @@ export const LoginBlock = styled.div`
 export const Title = styled.h3`
   font-size: 24px;
   line-height: 30px;
+`;
+
+export const LinkToGithub = styled.a`
+  font-size: 16px;
+  line-height: 20px;
+  color: ${COLORS.gray};
+  transition: opacity .3s ease;
+  
+  :hover {
+    opacity: 0.7;
+  }
 `;
 

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { FadeLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 import { COLORS } from 'constants/utils';
 import * as ST from './styled';
 
@@ -14,7 +14,7 @@ interface IProps {
 const Button: FC<IProps> = ({ text, isLoading, children, disabled, onClick, className }) => {
     return (
         <ST.ButtonWrapper onClick={onClick} disabled={disabled} className={className}>
-            {isLoading ? <FadeLoader color={COLORS.lightGray} /> : text || children}
+            {isLoading ? <ClipLoader size={24} color={COLORS.primaryWhite} /> : text || children}
         </ST.ButtonWrapper>
     );
 };
