@@ -1,6 +1,7 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import auth from './reducers/auth';
+import consoleReducer from './reducers/console';
 import storage from 'redux-persist/lib/storage';
 
 export const persistConfig = {
@@ -10,6 +11,7 @@ export const persistConfig = {
 
 const reducer = combineReducers({
   auth: persistReducer(persistConfig, auth),
+  console: persistReducer(persistConfig, consoleReducer),
 });
 
 export const store = configureStore({

@@ -1,8 +1,18 @@
-import styled, { createGlobalStyle } from 'styled-components';
-import { COLORS } from 'constants/utils';
-import { FullScreen } from 'react-full-screen';
+import { createGlobalStyle } from 'styled-components';
+import ubuntu from 'assets/fonts/Ubuntu-Regular.ttf';
 
 export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: "UbuntuRegular";
+    src: url(${ubuntu}) format("truetype");
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  html {
+    height: 100%;
+  }
+
   div, button, input {
     box-sizing: border-box;
     border: none;
@@ -22,7 +32,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   #root {
-    min-height: 100vh;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   
   ul[class],
@@ -48,11 +61,14 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    min-height: 100vh;
+    height: 100%;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
     font-family: SF Pro Text, sans-serif;
+    overflow: hidden;
+    background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
   }
   
   ul[class],
@@ -92,19 +108,4 @@ export const GlobalStyle = createGlobalStyle`
       scroll-behavior: auto !important;
     }
   }
-`;
-
-export const AppWrapper = styled(FullScreen)`
-  width: 100%;
-  min-height: 100vh;
-  background: ${COLORS.background};
-  font-family: Roboto, sans-serif;
-  color: ${COLORS.black};
-`;
-
-export const Container = styled.div`
-  max-width: 1080px;
-  padding: 0 20px;
-  width: 100%;
-  margin: 0 auto;
 `;
