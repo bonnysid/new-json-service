@@ -31,7 +31,7 @@ export const Label = styled.label<{ isError?: boolean }>`
 export const Input = styled.input<{ isError?: boolean }>`
   width: 100%;
   background: ${COLORS.primaryWhite};
-  border: 1px solid ${({ isError }) => isError ? COLORS.red : COLORS.primaryBlack + OPACITY['20']};
+  border: 1px solid ${({ isError }) => isError ? COLORS.red : ({ theme }) => theme.border};
   box-shadow: ${({ isError }) => isError ? `0px 0px 5px ${COLORS.red + OPACITY['50']}` : 'none'};
   font-size: 18px;
   line-height: 30px;
@@ -45,7 +45,7 @@ export const Input = styled.input<{ isError?: boolean }>`
   
   :focus {
     border: 1px solid ${COLORS.primaryBlack + OPACITY['40']};
-    outline: 2px solid ${COLORS.primaryBlack + OPACITY['20']};
+    outline: 2px solid ${({ theme }) => theme.border};
     border-radius: 7px;
   }
 `;

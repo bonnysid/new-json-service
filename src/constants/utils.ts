@@ -1,4 +1,7 @@
+import { DefaultTheme } from 'styled-components';
+
 export const COLORS = {
+    darkBody: '#363537',
     background: '#F7F7F7',
     black: '#0D0D0D',
     primaryBlack: '#000000',
@@ -6,14 +9,25 @@ export const COLORS = {
     gray: '#999999',
     lightGray: '#C4C4C4',
     darkWhite: '#F6F6F6',
+    activeLine: '#FFFBD1',
+    darkActiveLine: '#4d5f73',
+    darkBG: 'rgb(54, 57, 63)',
+    borderBlack: 'rgb(96, 96, 96)',
+    headerDarkBG: 'rgba(36, 38, 41, 0.95)',
+    darkTextarea: '#2c2c2c',
     blueGradient: 'linear-gradient(180deg, #45A6FF 0%, #0055FB 100%), #C4C4C4',
     darkBlueGradient: 'linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), linear-gradient(180deg, #45A6FF 0%, #0055FB 100%), #C4C4C4',
     lightBlueGradient: 'linear-gradient(0deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), linear-gradient(180deg, #45A6FF 0%, #0055FB 100%), #C4C4C4',
     grayGradient: 'linear-gradient(0deg, #C4C4C4, #C4C4C4), linear-gradient(180deg, #45A6FF 0%, #0055FB 100%)',
+    skyGradient: 'linear-gradient(#39598A, #79D7ED)',
+    nightGradient: 'linear-gradient(#091236, #1E215D)',
     red: '#CF2C00',
+    darkRed: '#8F2302',
     blue: '#0055FB',
     lightBlue: '#45A5FF',
     green: '#30B800',
+    darkGreen: '#57921d',
+    darkHistoryItemBG: '#4d515a',
 };
 
 export const OPACITY = {
@@ -25,3 +39,27 @@ export const OPACITY = {
     '60': '99',
 };
 
+export const lightTheme: DefaultTheme = {
+    body: COLORS.background,
+    text: COLORS.black,
+    consolePageBG: COLORS.primaryWhite,
+    border: COLORS.primaryBlack + OPACITY['20'],
+    headerBG: COLORS.darkWhite,
+    gradient: COLORS.skyGradient,
+    svgStroke: COLORS.black,
+    textarea: COLORS.primaryWhite,
+    activeLine: COLORS.activeLine,
+    historyItemBG: COLORS.primaryWhite,
+}
+export const darkTheme: DefaultTheme = {
+    body: COLORS.darkBody,
+    text: COLORS.darkWhite,
+    headerBG: COLORS.headerDarkBG,
+    border: COLORS.borderBlack,
+    consolePageBG: COLORS.darkBG,
+    gradient: COLORS.nightGradient,
+    svgStroke: COLORS.darkWhite,
+    textarea: COLORS.darkTextarea,
+    activeLine: COLORS.darkActiveLine,
+    historyItemBG: COLORS.darkHistoryItemBG,
+}

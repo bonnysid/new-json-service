@@ -4,7 +4,11 @@ import { useActions } from 'hooks/useActions';
 
 export const useLogin = () => {
     const { login } = useActions();
-    const { isLoading, mutate, isError, error } = useMutation<ILoginResponse, ILoginError, ILoginData, unknown>((data) => loginRequest(data), {
+    const { isLoading,
+        mutate,
+        isError,
+        error
+    } = useMutation<ILoginResponse, ILoginError, ILoginData, unknown>((data) => loginRequest(data), {
         onSuccess: (data) => {
             login(data);
         },
