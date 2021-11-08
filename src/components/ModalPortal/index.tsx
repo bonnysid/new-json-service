@@ -16,6 +16,7 @@ const ModalPortal: FC<ModalPortalProps> = ({
         return () => {
             document.body.removeChild(root)
         };
+        // eslint-disable-next-line
     }, []);
 
     return ReactDOM.createPortal(children, root);

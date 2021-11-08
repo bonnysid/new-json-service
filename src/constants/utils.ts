@@ -49,7 +49,8 @@ export const lightTheme: DefaultTheme = {
     svgStroke: COLORS.black,
     textarea: COLORS.primaryWhite,
     activeLine: COLORS.activeLine,
-    historyItemBG: COLORS.primaryWhite,
+    blockBg: COLORS.primaryWhite,
+    inputOptional: COLORS.gray,
 }
 export const darkTheme: DefaultTheme = {
     body: COLORS.darkBody,
@@ -61,5 +62,6 @@ export const darkTheme: DefaultTheme = {
     svgStroke: COLORS.darkWhite,
     textarea: COLORS.darkTextarea,
     activeLine: COLORS.darkActiveLine,
-    historyItemBG: COLORS.darkHistoryItemBG,
+    blockBg: COLORS.darkHistoryItemBG,
+    inputOptional: COLORS.lightGray,
 }

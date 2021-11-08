@@ -12,6 +12,7 @@ declare module 'styled-components' {
         svgStroke: string;
         textarea: string;
         activeLine: string;
-        historyItemBG: string;
+        blockBg: string;
+        inputOptional: string;
     }
 }

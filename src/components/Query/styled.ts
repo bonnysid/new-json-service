@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { COLORS, OPACITY } from 'constants/utils';
+import { COLORS } from 'constants/utils';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const Header = styled.div`
   column-gap: 10px;
   padding: 10px;
   cursor: pointer;
-  background: ${({ theme }) => theme.historyItemBG};
+  background: ${({ theme }) => theme.blockBg};
   border-radius: 10px;
 `;
 
@@ -26,7 +26,7 @@ export const Info = styled.div<{ isOpen?: boolean }>`
   height: ${({ isOpen }) => isOpen ? 'fit-content' : '0px'};
   transition: height .3s linear;
   padding: 10px 10px 10px 30px;
-  background: ${({ theme }) => theme.historyItemBG};
+  background: ${({ theme }) => theme.blockBg};
 `;
 
 export const Status = styled.div<{ isSuccess?: boolean }>`

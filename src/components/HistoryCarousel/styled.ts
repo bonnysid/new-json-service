@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { COLORS, OPACITY } from 'constants/utils';
 import { ReactComponent as Cross } from 'assets/icons/cross.svg';
 
 export const Wrapper = styled.div`

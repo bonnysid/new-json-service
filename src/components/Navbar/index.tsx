@@ -4,7 +4,7 @@ import { useTypedSelector } from 'hooks/useTypedSelector';
 import { useActions } from 'hooks/useActions';
 import { Routes } from 'router/routes';
 import { LINKS } from 'components/Navbar/data';
-import { LOGOUT_LABEL } from 'constants/naming';
+import { LOGOUT_LABEL } from 'constants/names';
 import * as ST from './styled';
 
 interface IProps {
@@ -19,7 +19,7 @@ const Navbar: FC<IProps> = ({ openFullscreen, isFullScreen, closeFullscreen }) =
     const { push } = useHistory();
     const { sublogin, login, isAuth } = useTypedSelector(state => state.auth);
 
-    const goTo = (url: Routes) => {
+    const goTo = (url: string) => {
         push(url);
     };
 

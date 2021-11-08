@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  background: ${({ theme }) => theme.historyItemBG};
+  background: ${({ theme }) => theme.blockBg};
   box-shadow: 0 1px 2px ${COLORS.black + OPACITY['10']};
   border-radius: 5px;
   column-gap: 5px;
@@ -41,7 +41,7 @@ export const Dropdown = styled.div<{ settings: IDropdownSettings }>`
     width: ${settings.width}px;
   `}
   padding: 5px 0;
-  background: ${({ theme }) => theme.historyItemBG};
+  background: ${({ theme }) => theme.blockBg};
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 3px;
   min-width: 133px;

@@ -3,7 +3,7 @@ import { Resizable } from 're-resizable';
 import Editor from 'components/Editor';
 import { RESIZE_SETTINGS } from 'components/QueryResponseBlock/RequestTextarea/data';
 import { ISendsayRequest } from 'api/console';
-import { REQUEST_LABEL } from 'constants/naming';
+import { REQUEST_LABEL } from 'constants/names';
 import * as ST from '../ResponseTextarea/styled';
 
 interface IProps {

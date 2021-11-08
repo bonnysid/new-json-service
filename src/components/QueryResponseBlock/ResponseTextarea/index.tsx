@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { IQuerySendsayResponse } from 'api/console';
-import { RESPONSE_LABEL } from 'constants/naming';
+import { RESPONSE_LABEL } from 'constants/names';
 import * as ST from './styled';
 
 interface IProps {

@@ -4,23 +4,13 @@ import * as ST from './styled';
 import 'jsoneditor/dist/jsoneditor.css';
 
 export type modes = 'tree' | 'view' | 'form' | 'code' | 'text';
+type TValue = object | [] | string | boolean | number;
 
-export interface CustomEditorProps {
-    value: object | [] | string | boolean | number;
+export interface EditorProps {
+    value: TValue;
     onChange: (dataObj: any, dataStr: string) => void;
-}
-
-export interface EditorProps extends CustomEditorProps {
     formattedValue?: string,
-    name?: string,
-    schema?: object,
-    schemaRefs?: object,
-    sortObjectKeys?: boolean,
-    onFormat?: () => string,
-    onError?: (error: boolean) => void,
-    onModeChange?: (props?: any) => void,
-    theme?: string,
-    history?: boolean,
+    onError: (error: boolean) => void,
     isError?: boolean;
 }
 
@@ -31,39 +21,38 @@ const defaultSettings: JSONEditorOptions = {
     search: false,
 };
 
-const Editor: FC<EditorProps> = (props) => {
-    const containerRef = useRef<HTMLDivElement>(null)
-    const editorRef = useRef<JSONEditor>()
+const Editor: FC<EditorProps> = ({ value, formattedValue, onError, onChange, isError }) => {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const editorRef = useRef<JSONEditor>();
 
     useEffect(() => {
-        createEditor(props);
+        createEditor(value);
 
         return () => {
-            editorRef.current!.destroy()
-        }
-    }, [])
+            editorRef.current!.destroy();
+        };
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
-        const currentJson = editorRef.current!.get()
-        if(JSON.stringify(props.value) !== '{}' && JSON.stringify(props.value) !== JSON.stringify(currentJson)) {
-            editorRef.current!.update(props.value)
+        const currentJson = editorRef.current!.get();
+        if(JSON.stringify(value) !== '{}' && JSON.stringify(value) !== JSON.stringify(currentJson)) {
+            editorRef.current!.update(value);
         }
-    }, [props.value])
+    }, [value]);
 
     useEffect(() => {
-        console.log(props.formattedValue, props.value);
-        if(props.formattedValue && props.formattedValue !== props.value) {
-            editorRef.current!.updateText(props.formattedValue);
+        if(formattedValue && formattedValue !== value) {
+            editorRef.current!.updateText(formattedValue);
         }
-    }, [props.formattedValue])
+        // eslint-disable-next-line
+    }, [formattedValue]);
 
-    const handleError = (error: Error) => {
-        props.onError!(true);
+    const handleError = () => {
+        onError!(true);
     };
 
-    // eslint-disable-next-line react/sort-comp
-
-    const createEditor = ({value, onChange, ...rest}: EditorProps) => {
+    const createEditor = (value: TValue) => {
         if (editorRef.current) {
             editorRef.current.destroy();
         }
@@ -77,36 +66,35 @@ const Editor: FC<EditorProps> = (props) => {
         editorRef.current.set(value);
     }
 
-    const getText = () => editorRef.current!.getText()
+    const getText = () => editorRef.current!.getText();
 
-    const updateText = (text: string) => editorRef.current!.updateText(text)
+    const updateText = (text: string) => editorRef.current!.updateText(text);
 
     const handleChange = () => {
-        if (props.onChange) {
+        if (onChange) {
             try {
                 const text = editorRef.current!.getText();
                 if (text === '') {
-                    props.onChange(null, '');
+                    onChange(null, '');
                 }
                 const currentJson = editorRef.current!.get();
-                props.onChange(currentJson, getText())
-                if (JSON.stringify(props.value) !== JSON.stringify(currentJson)) {
-                    editorRef.current!.updateText(editorRef.current!.getText())
-                    props.onChange(currentJson, editorRef.current!.getText());
+                onChange(currentJson, getText());
+                if (JSON.stringify(value) !== JSON.stringify(currentJson)) {
+                    editorRef.current!.updateText(editorRef.current!.getText());
+                    onChange(currentJson, editorRef.current!.getText());
                 }
                 if(getText() !== JSON.stringify(currentJson)) {
-                    updateText(getText())
+                    updateText(getText());
                 }
-                props.onError!(false);
+                onError(false);
             } catch (err) {
-                // @ts-ignore
-                props.onError!(true);
+                onError(true);
             }
         }
     }
 
     return (
-        <ST.Textarea isError={props.isError} ref={containerRef}/>
+        <ST.Textarea isError={isError} ref={containerRef}/>
     );
 }
 
