@@ -13,5 +13,6 @@ export const useOutsideHandler = (
 
         document.addEventListener('mousedown', handleOutsideClick);
         return () => document.removeEventListener('mousedown', handleOutsideClick);
-    }, [ref, btnRef])
+        // eslint-disable-next-line
+    }, [ref, btnRef]);
 };

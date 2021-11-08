@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { IQueryHistoryItem } from 'store/reducers/console';
-import { REQUEST_LABEL, RESPONSE_LABEL } from 'constants/naming';
+import { REQUEST_LABEL, RESPONSE_LABEL } from 'constants/names';
 import * as ST from './styled';
 
 interface IProps {

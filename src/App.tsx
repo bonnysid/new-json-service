@@ -1,9 +1,8 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
-import store, { persistor } from './store';
+import { persistor } from 'store';
 import AppRouter from './router';
 import { GlobalStyle } from 'styled';
 import { ThemeProvider } from 'styled-components';

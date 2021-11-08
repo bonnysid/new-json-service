@@ -3,7 +3,6 @@ import { COLORS } from 'constants/utils';
 import { ReactComponent as FullScreen } from 'assets/icons/full-screen.svg';
 import { ReactComponent as FullScreenClose } from 'assets/icons/fullscreen-close.svg';
 import { ReactComponent as LogoutSvg } from 'assets/icons/log-out.svg';
-import React from 'react';
 
 export const Wrapper = styled.header`
   display: flex;

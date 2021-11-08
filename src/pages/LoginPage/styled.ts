@@ -9,7 +9,7 @@ export const Container = styled.main`
   align-items: center;
   row-gap: 20px;
   justify-content: center;
-  background: ${COLORS.background};
+  background: ${({ theme }) => theme.body};;
 `;
 
 export const LoginBlock = styled.div`
@@ -17,7 +17,7 @@ export const LoginBlock = styled.div`
   flex-direction: column;
   max-width: 520px;
   width: 100%;
-  background: ${COLORS.primaryWhite};
+  background: ${({ theme }) => theme.blockBg};
   box-shadow: 0 4px 10px ${COLORS.primaryBlack + OPACITY['10']};
   border-radius: 5px;
   padding: 40px 30px;

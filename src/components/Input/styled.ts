@@ -18,20 +18,20 @@ export const Header = styled.div`
 export const OptionalText = styled.div`
   font-size: 12px;
   line-height: 20px;
-  color: ${COLORS.gray}
+  color: ${({ theme }) => theme.inputOptional};
 `;
 
 export const Label = styled.label<{ isError?: boolean }>`
   font-size: 16px;
   line-height: 20px;
   transition: color .3s ease;
-  color: ${({ isError }) => isError ? COLORS.red : COLORS.black};
+  color: ${({ isError, theme }) => isError ? COLORS.red : theme.text};
 `;
 
 export const Input = styled.input<{ isError?: boolean }>`
   width: 100%;
-  background: ${COLORS.primaryWhite};
-  border: 1px solid ${({ isError }) => isError ? COLORS.red : ({ theme }) => theme.border};
+  background: ${({ theme }) => theme.textarea};;
+  border: 1px solid ${({ isError, theme }) => isError ? COLORS.red : theme.border};
   box-shadow: ${({ isError }) => isError ? `0px 0px 5px ${COLORS.red + OPACITY['50']}` : 'none'};
   font-size: 18px;
   line-height: 30px;
@@ -47,5 +47,14 @@ export const Input = styled.input<{ isError?: boolean }>`
     border: 1px solid ${COLORS.primaryBlack + OPACITY['40']};
     outline: 2px solid ${({ theme }) => theme.border};
     border-radius: 7px;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px ${({ theme }) => theme.textarea} inset !important;
+    -webkit-text-fill-color: ${({ theme }) => theme.text} !important;
+    caret-color: ${({ theme }) => theme.text} !important;
   }
 `;
