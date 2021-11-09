@@ -18,7 +18,7 @@ function App() {
     const isLightTheme = theme === Themes.light;
 
     return (
-        <HashRouter>
+        <HashRouter basename={process.env.PUBLIC_URL}>
             <QueryClientProvider client={client}>
                 <PersistGate persistor={persistor}>
                     <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
