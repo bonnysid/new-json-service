@@ -27,7 +27,7 @@ const Navbar: FC<IProps> = ({ openFullscreen, isFullScreen, closeFullscreen }) =
         <ST.Wrapper>
             <ST.LogoBlock>
                 <ST.Logo onClick={() => goTo(Routes.CONSOLE)} />
-                {LINKS.map(link => <ST.LinkButton key={link.path} onClick={() => goTo(link.path)} isActive={pathname === link.path}>{link.text}</ST.LinkButton>)}
+                {LINKS.map(link => <ST.LinkButton key={link.path} to={link.path} isActive={pathname === link.path}>{link.text}</ST.LinkButton>)}
             </ST.LogoBlock>
             <ST.ControlsBlock>
                 <ST.UserInfo>{login} <span>:</span> {sublogin}</ST.UserInfo>

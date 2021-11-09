@@ -4,12 +4,12 @@ import { ILoginResponse } from 'api/auth';
 interface IAuthState {
     isAuth: boolean;
     session: string | null;
-    sublogin: string | null;
+    sublogin?: string | null;
     login: string | null;
 }
 
 const initialState: IAuthState = {
-    isAuth: true,
+    isAuth: false,
     session: null,
     login: null,
     sublogin: null,
@@ -26,6 +26,7 @@ const authSlice = createSlice({
             state.login = null;
         },
         login: (state, action: PayloadAction<ILoginResponse>) => {
+            state.isAuth = true;
             state.session = action.payload.session;
             state.sublogin = action.payload.sublogin;
             state.login = action.payload.login;

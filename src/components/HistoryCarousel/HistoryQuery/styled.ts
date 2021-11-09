@@ -30,7 +30,7 @@ export const Action = styled.div`
 `;
 
 export const Dots = styled(DotsSVG)`
-
+  fill: ${({ theme }) => theme.fillSvg};
 `;
 
 export const Dropdown = styled.div<{ settings: IDropdownSettings }>`

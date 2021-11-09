@@ -10,7 +10,7 @@ export interface ILoginData {
 export interface ILoginResponse {
     login: string
     session: string
-    sublogin: string
+    sublogin?: string
 }
 
 export interface ILoginError {
@@ -19,10 +19,15 @@ export interface ILoginError {
 }
 
 export const loginRequest = async (body: ILoginData): Promise<ILoginResponse> => {
-    const data = await sendsay.login(body);
+    await sendsay.login(body);
     setCookie({
         name: 'sendsay_session',
         value: sendsay.session,
     });
-    return data;
+    const { sublogin } = await sendsay.request({ action: 'pong' });
+    return {
+        login: body.login,
+        session: sendsay.session,
+        sublogin,
+    };
 }

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const Header = styled.div`
+export const Header = styled.div<{ isOpen?: boolean }>`
   display: flex;
   align-items: center;
   width: 100%;
@@ -15,7 +15,8 @@ export const Header = styled.div`
   padding: 10px;
   cursor: pointer;
   background: ${({ theme }) => theme.blockBg};
-  border-radius: 10px;
+  border-radius: ${({ isOpen }) => isOpen ? '10px 10px 0 0' : '10px'};
+  border-bottom: ${({ isOpen, theme }) => isOpen ? `1px solid ${theme.border}` : 'none'};
 `;
 
 export const Info = styled.div<{ isOpen?: boolean }>`
@@ -26,6 +27,7 @@ export const Info = styled.div<{ isOpen?: boolean }>`
   height: ${({ isOpen }) => isOpen ? 'fit-content' : '0px'};
   transition: height .3s linear;
   padding: 10px 10px 10px 30px;
+  border-radius: 0 0 10px 10px;
   background: ${({ theme }) => theme.blockBg};
 `;
 

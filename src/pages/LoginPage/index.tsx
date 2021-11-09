@@ -3,6 +3,7 @@ import Input, { InputTypes } from 'components/Input';
 import Button from 'components/Button';
 import ErrorPlank from 'components/ErrorPlank';
 import { useLogin } from 'hooks/useLogin';
+import logo from 'assets/icons/logo.svg';
 import * as ST from './styled';
 
 const LoginPage: FC = () => {
@@ -20,7 +21,7 @@ const LoginPage: FC = () => {
 
     return (
         <ST.Container>
-            <img src="/icons/logo.svg" alt="logo"/>
+            <img src={logo} alt="logo"/>
             <ST.LoginBlock>
                 <ST.Title>API-консолька</ST.Title>
                 <ErrorPlank display={isError} errorTitle={'Вход не вышел'} errorMessage={JSON.stringify({ id: error?.id, explain: error?.explain })} />

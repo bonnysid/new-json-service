@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import { COLORS } from 'constants/utils';
 import { ReactComponent as FullScreen } from 'assets/icons/full-screen.svg';
 import { ReactComponent as FullScreenClose } from 'assets/icons/fullscreen-close.svg';
 import { ReactComponent as LogoutSvg } from 'assets/icons/log-out.svg';
+import logo from 'assets/icons/logo.svg';
 
 export const Wrapper = styled.header`
   display: flex;
@@ -47,10 +49,10 @@ export const LogoutButton = styled.button`
   }
 `;
 
-export const LinkButton = styled.button<{ isActive?: boolean }>`
+export const LinkButton = styled(Link)<{ isActive?: boolean }>`
   font-size: 20px;
   line-height: 30px;
-  ${({ isActive }) => isActive && css`color: ${COLORS.blue};`}
+  color: ${({ theme, isActive }) => isActive ? COLORS.blue : theme.text};
   
   :hover {
     color: ${COLORS.blue};
@@ -58,7 +60,7 @@ export const LinkButton = styled.button<{ isActive?: boolean }>`
 `;
 
 export const Logo = styled.img.attrs({
-  src: '/icons/logo.svg',
+  src: logo,
   width: 115,
   height: 30,
   alt: 'logo',

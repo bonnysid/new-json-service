@@ -14,5 +14,6 @@ declare module 'styled-components' {
         activeLine: string;
         blockBg: string;
         inputOptional: string;
+        fillSvg: string;
     }
 }
