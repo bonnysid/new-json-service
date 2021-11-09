@@ -44,6 +44,7 @@ export const lightTheme: DefaultTheme = {
     text: COLORS.black,
     consolePageBG: COLORS.primaryWhite,
     border: COLORS.primaryBlack + OPACITY['20'],
+    fillSvg: COLORS.primaryBlack + OPACITY['20'],
     headerBG: COLORS.darkWhite,
     gradient: COLORS.skyGradient,
     svgStroke: COLORS.black,
@@ -64,4 +65,5 @@ export const darkTheme: DefaultTheme = {
     activeLine: COLORS.darkActiveLine,
     blockBg: COLORS.darkHistoryItemBG,
     inputOptional: COLORS.lightGray,
+    fillSvg: COLORS.darkWhite,
 }

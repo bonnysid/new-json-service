@@ -16,7 +16,7 @@ const Query: FC<IProps> = ({ query }) => {
 
     return (
         <ST.Wrapper>
-            <ST.Header onClick={toggleInfo}>
+            <ST.Header isOpen={isOpen} onClick={toggleInfo}>
                 <ST.Status isSuccess={query.isSuccess} />
                 <ST.Action>{query.content.action}</ST.Action>
             </ST.Header>

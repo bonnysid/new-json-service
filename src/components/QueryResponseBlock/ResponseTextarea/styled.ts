@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 import { COLORS, OPACITY } from 'constants/utils';
+import { ReactComponent as DotsSvg } from 'assets/icons/dots.svg';
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
   row-gap: 3px;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
 `;
@@ -28,4 +37,11 @@ export const Textarea = styled.textarea<{ isError?: boolean }>`
   width: 100%;
   height: 100%;
   resize: none;
+`;
+
+export const Dots = styled(DotsSvg)`
+  cursor: grab;
+  position: relative;
+  left: 5px;
+  fill: ${({ theme }) => theme.border};
 `;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import { persistor } from 'store';
 import AppRouter from './router';
 import { GlobalStyle } from 'styled';
@@ -18,7 +18,7 @@ function App() {
     const isLightTheme = theme === Themes.light;
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <QueryClientProvider client={client}>
                 <PersistGate persistor={persistor}>
                     <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
@@ -28,7 +28,7 @@ function App() {
                     </ThemeProvider>
                 </PersistGate>
             </QueryClientProvider>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 

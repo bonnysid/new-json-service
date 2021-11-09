@@ -4,7 +4,8 @@ import { useActions } from 'hooks/useActions';
 
 export const useLogin = () => {
     const { login } = useActions();
-    const { isLoading,
+    const {
+        isLoading,
         mutate,
         isError,
         error

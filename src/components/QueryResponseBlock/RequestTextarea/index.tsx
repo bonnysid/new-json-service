@@ -19,13 +19,16 @@ const RequestTextarea: FC<IProps> = ({ isError, onChange, onError, query, format
         <Resizable {...RESIZE_SETTINGS}>
             <ST.Wrapper>
                 <ST.Label isError={isError}>{REQUEST_LABEL}</ST.Label>
-                <Editor
-                    value={query}
-                    onChange={onChange}
-                    onError={onError}
-                    formattedValue={formattedQuery}
-                    isError={isError}
-                />
+                <ST.Row>
+                    <Editor
+                        value={query}
+                        onChange={onChange}
+                        onError={onError}
+                        formattedValue={formattedQuery}
+                        isError={isError}
+                    />
+                    <ST.Dots />
+                </ST.Row>
             </ST.Wrapper>
         </Resizable>
     );
