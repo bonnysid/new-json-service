@@ -11,19 +11,16 @@ export interface QueryResponseBlockProps {
     handleSendClick: () => void;
     isLoading: boolean;
     isError: boolean;
+    isJsonError: boolean;
     response?: IQuerySendsayResponse;
+    onError: (b: boolean) => void;
 }
 
-const QueryResponseBlock: FC<QueryResponseBlockProps> = ({query, setQuery, isError, response, isLoading, handleSendClick}) => {
+const QueryResponseBlock: FC<QueryResponseBlockProps> = ({query, isJsonError, setQuery, isError, response, isLoading, handleSendClick, onError}) => {
     const [formattedQuery, setFormattedQuery] = useState('')
-    const [isJsonError, setJsonError] = useState(false)
 
     const handleFormatClick = () => {
         setFormattedQuery(JSON.stringify(query, null, 2));
-    };
-
-    const handleError = (v: boolean) => {
-        setJsonError(v);
     };
 
     const handleChange = (value: ISendsayRequest) => {
@@ -36,7 +33,7 @@ const QueryResponseBlock: FC<QueryResponseBlockProps> = ({query, setQuery, isErr
                 <RequestTextarea
                     query={query}
                     onChange={handleChange}
-                    onError={handleError}
+                    onError={onError}
                     formattedQuery={formattedQuery}
                     isError={isJsonError || isError}
                 />

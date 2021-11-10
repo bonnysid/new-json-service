@@ -9,6 +9,7 @@ import { useTypedSelector } from 'hooks/useTypedSelector';
 const ConsolePage = () => {
     const history = useTypedSelector(state => state.console.history);
     const [query, setQuery] = useState<ISendsayRequest>({ action: 'pong' });
+    const [isJsonError, setJsonError] = useState(false)
     const { response, isError, error, isLoading, executeQuery } = useSendQuery();
 
     const handleSendClick = () => {
@@ -25,7 +26,7 @@ const ConsolePage = () => {
     const checkQuery = () => {
         const strHistory = history.map(query => JSON.stringify(query));
         const strQuery = JSON.stringify(query);
-        return !strHistory.includes(strQuery);
+        return !strHistory.includes(strQuery) && !isJsonError;
     };
 
     return (
@@ -38,6 +39,8 @@ const ConsolePage = () => {
                 handleSendClick={handleSendClick}
                 query={query}
                 setQuery={setQuery}
+                isJsonError={isJsonError}
+                onError={setJsonError}
             />
         </Layout>
     );
