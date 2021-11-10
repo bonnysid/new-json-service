@@ -24,7 +24,7 @@ const ConsolePage = () => {
     };
 
     const checkQuery = () => {
-        const strHistory = history.map(query => JSON.stringify(query));
+        const strHistory = history.map(query => JSON.stringify(query.content));
         const strQuery = JSON.stringify(query);
         return !strHistory.includes(strQuery) && !isJsonError;
     };
