@@ -2,17 +2,27 @@ import { useMutation } from 'react-query';
 import { IQuerySendsayResponse, ISendsayRequest, sendQuery } from 'api/console';
 import { useActions } from 'hooks/useActions';
 import { v4 as uuidv4 } from 'uuid';
+import { useTypedSelector } from 'hooks/useTypedSelector';
+import { IQueryHistoryItem } from 'store/reducers/console';
 
 export const useSendQuery = () => {
-    const { addToHistory } = useActions();
+    const history = useTypedSelector(state => state.console.history);
+    const { addToHistory, deleteFromHistory } = useActions();
 
     const handleResponse = (response: IQuerySendsayResponse, query: ISendsayRequest, isSuccess: boolean = true) => {
-        addToHistory({
+        const oldQuery = history.find(item => item.content.action === query.action);
+        const newQuery: IQueryHistoryItem = {
             id: uuidv4(),
             content: query,
             isSuccess,
             response,
-        });
+        };
+
+        if (oldQuery) {
+            deleteFromHistory(oldQuery);
+        }
+
+        addToHistory(newQuery);
     };
 
     const {

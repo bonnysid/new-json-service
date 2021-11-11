@@ -25,13 +25,18 @@ const initialState: IConsoleState = {
     theme: Themes.light,
 };
 
+const MAX_HISTORY_ITEMS = 20;
+
 const consoleSlice = createSlice({
     name: 'console',
     initialState,
     reducers: {
         addToHistory: (state, action: PayloadAction<IQueryHistoryItem>) => {
-            state.history.push(action.payload);
-            state.savedHistory.push(action.payload);
+            if (state.history.length >= MAX_HISTORY_ITEMS) {
+                state.history.pop();
+            }
+            state.history.unshift(action.payload);
+            state.savedHistory.unshift(action.payload);
         },
         clearHistory: (state) => {
             state.history = [];

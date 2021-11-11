@@ -15,4 +15,6 @@ export const RESIZE_SETTINGS = {
         topRight: false,
         right: true
     },
+    minWidth: '20%',
+    maxWidth: '80%',
 };

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import Footer from 'components/QueryResponseBlock/Footer';
 import ResponseTextarea from 'components/QueryResponseBlock/ResponseTextarea';
 import RequestTextarea from 'components/QueryResponseBlock/RequestTextarea';
@@ -7,8 +7,10 @@ import * as ST from './styled';
 
 export interface QueryResponseBlockProps {
     query: ISendsayRequest;
-    setQuery: React.Dispatch<React.SetStateAction<ISendsayRequest>>;
+    onChange: (query: ISendsayRequest, vStr: string) => void;
     handleSendClick: () => void;
+    handleFormatClick: () => void;
+    formattedQuery: string;
     isLoading: boolean;
     isError: boolean;
     isJsonError: boolean;
@@ -16,23 +18,24 @@ export interface QueryResponseBlockProps {
     onError: (b: boolean) => void;
 }
 
-const QueryResponseBlock: FC<QueryResponseBlockProps> = ({query, isJsonError, setQuery, isError, response, isLoading, handleSendClick, onError}) => {
-    const [formattedQuery, setFormattedQuery] = useState('')
-
-    const handleFormatClick = () => {
-        setFormattedQuery(JSON.stringify(query, null, 2));
-    };
-
-    const handleChange = (value: ISendsayRequest) => {
-        setQuery(value);
-    };
-
+const QueryResponseBlock: FC<QueryResponseBlockProps> = ({
+     query,
+     formattedQuery,
+     isJsonError,
+     handleFormatClick,
+     onChange,
+     isError,
+     response,
+     isLoading,
+     handleSendClick,
+     onError,
+}) => {
     return (
         <ST.Wrapper>
             <ST.TextareasContainer>
                 <RequestTextarea
                     query={query}
-                    onChange={handleChange}
+                    onChange={onChange}
                     onError={onError}
                     formattedQuery={formattedQuery}
                     isError={isJsonError || isError}

@@ -81,7 +81,6 @@ const HistoryCarousel: FC<HistoryCarouselProps> = ({ onExecuteQuery }) => {
     const onSliderScroll = (e: React.WheelEvent<HTMLDivElement>) => {
         const { isLeftEnd, isRightEnd, isFewItems, isNotMouseInSlider } = checkSliderDisable();
 
-        console.log();
         if (isFewItems || isNotMouseInSlider) {
             return;
 

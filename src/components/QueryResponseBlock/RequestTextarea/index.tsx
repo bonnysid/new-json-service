@@ -9,7 +9,7 @@ import * as ST from '../ResponseTextarea/styled';
 interface IProps {
     isError?: boolean;
     query: ISendsayRequest;
-    onChange: (v: ISendsayRequest) => void;
+    onChange: (v: ISendsayRequest, vStr: string) => void;
     onError: (e: boolean) => void
     formattedQuery: string;
 }

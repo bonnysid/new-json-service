@@ -4,29 +4,35 @@ import QueryResponseBlock from 'components/QueryResponseBlock';
 import { ISendsayRequest } from 'api/console';
 import Layout from 'components/Layout';
 import { useSendQuery } from 'hooks/useSendQuery';
-import { useTypedSelector } from 'hooks/useTypedSelector';
+import { formatObject } from 'helpers/utils';
 
 const ConsolePage = () => {
-    const history = useTypedSelector(state => state.console.history);
     const [query, setQuery] = useState<ISendsayRequest>({ action: 'pong' });
-    const [isJsonError, setJsonError] = useState(false)
+    const [isJsonError, setJsonError] = useState(false);
+    const [isFormatError, setIsFormatError] = useState(false);
+    const [formattedQuery, setFormattedQuery] = useState('')
     const { response, isError, error, isLoading, executeQuery } = useSendQuery();
 
-    const handleSendClick = () => {
-        if (checkQuery()) {
-            executeQuery(query);
+    const handleFormatClick = () => {
+        setFormattedQuery(formatObject(query));
+        setIsFormatError(false);
+    };
+
+    const handleSendClick = (request: ISendsayRequest = query) => {
+        if (!isJsonError && !isFormatError) {
+            executeQuery(request);
         }
     };
 
-    const onExecuteQuery = (query: ISendsayRequest) => {
+    const handleChangeQuery = (query: ISendsayRequest, queryStr?: string) => {
+        const correctQuery = formatObject(query);
+        setIsFormatError(correctQuery !== queryStr);
         setQuery(query);
-        executeQuery(query);
     };
 
-    const checkQuery = () => {
-        const strHistory = history.map(query => JSON.stringify(query.content));
-        const strQuery = JSON.stringify(query);
-        return !strHistory.includes(strQuery) && !isJsonError;
+    const onExecuteQuery = (query: ISendsayRequest) => {
+        handleChangeQuery(query);
+        handleSendClick(query);
     };
 
     return (
@@ -35,11 +41,13 @@ const ConsolePage = () => {
             <QueryResponseBlock
                 isError={isError}
                 isLoading={isLoading}
+                formattedQuery={formattedQuery}
+                handleFormatClick={handleFormatClick}
                 response={error || response}
                 handleSendClick={handleSendClick}
                 query={query}
-                setQuery={setQuery}
-                isJsonError={isJsonError}
+                onChange={handleChangeQuery}
+                isJsonError={isJsonError || isFormatError}
                 onError={setJsonError}
             />
         </Layout>
