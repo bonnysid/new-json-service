@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useTypedSelector } from 'hooks/useTypedSelector';
 import { IQueryHistoryItem } from 'store/reducers/console';
 
+const MAX_HISTORY_ITEMS = 20;
+
 export const useSendQuery = () => {
     const history = useTypedSelector(state => state.console.history);
     const { addToHistory, deleteFromHistory } = useActions();
@@ -20,6 +22,8 @@ export const useSendQuery = () => {
 
         if (oldQuery) {
             deleteFromHistory(oldQuery);
+        } else if (history.length >= MAX_HISTORY_ITEMS) {
+            deleteFromHistory(history[history.length - 1]);
         }
 
         addToHistory(newQuery);

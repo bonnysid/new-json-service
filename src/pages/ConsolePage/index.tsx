@@ -18,9 +18,9 @@ const ConsolePage = () => {
         setIsFormatError(false);
     };
 
-    const handleSendClick = (request: ISendsayRequest = query) => {
+    const handleSendClick = (query: ISendsayRequest) => {
         if (!isJsonError && !isFormatError) {
-            executeQuery(request);
+            executeQuery(query);
         }
     };
 
@@ -44,7 +44,7 @@ const ConsolePage = () => {
                 formattedQuery={formattedQuery}
                 handleFormatClick={handleFormatClick}
                 response={error || response}
-                handleSendClick={handleSendClick}
+                handleSendClick={() => handleSendClick(query)}
                 query={query}
                 onChange={handleChangeQuery}
                 isJsonError={isJsonError || isFormatError}
