@@ -8,7 +8,7 @@ import { IQueryHistoryItem } from 'store/reducers/console';
 const MAX_HISTORY_ITEMS = 20;
 
 export const useSendQuery = () => {
-    const history = useTypedSelector(state => state.console.history);
+    const history = useTypedSelector(state => state.console.history)
     const { addToHistory, deleteFromHistory } = useActions();
 
     const handleResponse = (response: IQuerySendsayResponse, query: ISendsayRequest, isSuccess: boolean = true) => {
